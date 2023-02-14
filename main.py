@@ -2,7 +2,9 @@ from source_data import MENU
 from source_data import resources
 
 ### Základní nastavení
-
+espresso_price = MENU["espresso"]["cost"]
+latte_price = MENU["latte"]["cost"]
+cappuccino_price = MENU["cappuccino"]["cost"]
 
 
 
