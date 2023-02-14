@@ -23,7 +23,7 @@ def coins():
     kc20 = int(input("Kolik 20 Kč chcete vložit?: ")) * 20
     kc50 = int(input("Kolik 50 Kč chcete vložit?: ")) * 50
     suma = kc1 + kc2 + kc5 + kc10 + kc20 + kc50
-    print(f"Celkem jste vložili?¨: {suma} Kč") 
+    print(f"Celkem jste vložili? : {suma} Kč") 
     return suma
 
 def calculate_change(user_sume_coins, price):
@@ -45,8 +45,14 @@ if user_choice == "report":
 
 if user_choice == "espresso":
     sum = coins()
+    print(f"Cena espressa je: {espresso_price} Kč")
+    calculate_change(sum, espresso_price)
 elif user_choice == "latte":
     sum = coins()
+    print(f"Cena espressa je: {latte_price} Kč")
+    calculate_change(sum, latte_price)
 elif user_choice == "cappuccino":
     sum = coins()
+    print(f"Cena espressa je: {cappuccino_price} Kč")
+    calculate_change(sum, cappuccino_price)
 
