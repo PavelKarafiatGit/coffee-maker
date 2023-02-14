@@ -26,6 +26,15 @@ def coins():
     print(f"Celkem jste vložili?¨: {suma} Kč") 
     return suma
 
+def calculate_change(user_sume_coins, price):
+    refund = user_sume_coins - price
+    if refund >= 0:
+        print("Nápoj se připravuje")
+        if refund > 0:
+            print(f"Zde jsou peníze zpět: {refund} Kč")
+    else:
+        print(f"Nevhodili jste dostatek peněz. Ještě je potřeba vložit {price - user_sume_coins}")
+    
 
 
 ### Kód automatu
