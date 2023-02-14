@@ -35,14 +35,49 @@ def calculate_change(user_sume_coins, price):
     else:
         print(f"Nevhodili jste dostatek peněz. Ještě je potřeba vložit {price - user_sume_coins}")
     
+def fill_in_ingredience():
+    return resources
+
+def calculate_ingredience(drink_name):
+    if drink_name == "espresso":
+        rest_of_ingredience["water"] = rest_of_ingredience["water"] - MENU["espresso"]["ingredients"]["water"]
+
+        rest_of_ingredience["milk"] = rest_of_ingredience["milk"] - MENU["espresso"]["ingredients"]["milk"]
+
+        rest_of_ingredience["coffee"] = rest_of_ingredience["coffee"] - MENU["espresso"]["ingredients"]["coffee"]
+        print(f"Zbylé ingredience: {rest_of_ingredience}")
+
+    elif drink_name == "latte":
+        rest_of_ingredience["water"] = rest_of_ingredience["water"] - MENU["latte"]["ingredients"]["water"]
+
+        rest_of_ingredience["milk"] = rest_of_ingredience["milk"] - MENU["latte"]["ingredients"]["milk"]
+
+        rest_of_ingredience["coffee"] = rest_of_ingredience["coffee"] - MENU["latte"]["ingredients"]["coffee"]
+        print(f"Zbylé ingredience: {rest_of_ingredience}")
+
+    elif drink_name == "cappuccino":
+
+        rest_of_ingredience["water"] = rest_of_ingredience["water"] - MENU["cappuccino"]["ingredients"]["water"]
+
+        rest_of_ingredience["milk"] = rest_of_ingredience["milk"] - MENU["cappuccino"]["ingredients"]["milk"]
+
+        rest_of_ingredience["coffee"] = rest_of_ingredience["coffee"] - MENU["cappuccino"]["ingredients"]["coffee"]
+        print(f"Zbylé ingredience: {rest_of_ingredience}")
+
 
 
 ### Kód automatu
+# Volba uživatele - jaký chce nápoj
 user_choice = input("Co si dáte? (espresso/latte/cappuccino): ")
 
-if user_choice == "report":
-    report(resources)
+# Načítáme původní množství ingrediencí
+rest_of_ingredience = fill_in_ingredience()
 
+# Kontrolní report
+if user_choice == "report":
+    report(rest_of_ingredience)
+
+# Hlavní kó automatu
 if user_choice == "espresso":
     sum = coins()
     print(f"Cena espressa je: {espresso_price} Kč")
