@@ -7,12 +7,12 @@ latte_price = MENU["latte"]["cost"]
 cappuccino_price = MENU["cappuccino"]["cost"]
 
 
-
 ### Funkce
 def report(data):
     print(f"Voda: {data['water']}")
     print(f"Mléko: {data['milk']}")
     print(f"Káva: {data['coffee']}")
+
 
 def coins():
     print("Prosím vložte mince 1, 2, 5, 10, 20, 50")
@@ -26,6 +26,7 @@ def coins():
     print(f"Celkem jste vložili? : {suma} Kč") 
     return suma
 
+
 def calculate_change(user_sume_coins, price):
     refund = user_sume_coins - price
     if refund >= 0:
@@ -35,34 +36,26 @@ def calculate_change(user_sume_coins, price):
     else:
         print(f"Nevhodili jste dostatek peněz. Ještě je potřeba vložit {price - user_sume_coins}")
     
+
 def fill_in_ingredience():
     return resources
 
+
+def consumption_ingredience(name_of_drink, ingredience):
+        ingredience["water"] = ingredience["water"] - MENU[name_of_drink]["ingredients"]["water"]
+        ingredience["milk"] = ingredience["milk"] - MENU[name_of_drink]["ingredients"]["milk"]
+        ingredience["coffee"] = ingredience["coffee"] - MENU[name_of_drink]["ingredients"]["coffee"]
+        print(f"Zbylé ingredience: {ingredience}")
+
+
 def calculate_ingredience(drink_name):
     if drink_name == "espresso":
-        rest_of_ingredience["water"] = rest_of_ingredience["water"] - MENU["espresso"]["ingredients"]["water"]
-
-        rest_of_ingredience["milk"] = rest_of_ingredience["milk"] - MENU["espresso"]["ingredients"]["milk"]
-
-        rest_of_ingredience["coffee"] = rest_of_ingredience["coffee"] - MENU["espresso"]["ingredients"]["coffee"]
-        print(f"Zbylé ingredience: {rest_of_ingredience}")
-
+        consumption_ingredience(drink_name, rest_of_ingredience)
     elif drink_name == "latte":
-        rest_of_ingredience["water"] = rest_of_ingredience["water"] - MENU["latte"]["ingredients"]["water"]
-
-        rest_of_ingredience["milk"] = rest_of_ingredience["milk"] - MENU["latte"]["ingredients"]["milk"]
-
-        rest_of_ingredience["coffee"] = rest_of_ingredience["coffee"] - MENU["latte"]["ingredients"]["coffee"]
-        print(f"Zbylé ingredience: {rest_of_ingredience}")
-
+        consumption_ingredience(drink_name, rest_of_ingredience)        
     elif drink_name == "cappuccino":
-
-        rest_of_ingredience["water"] = rest_of_ingredience["water"] - MENU["cappuccino"]["ingredients"]["water"]
-
-        rest_of_ingredience["milk"] = rest_of_ingredience["milk"] - MENU["cappuccino"]["ingredients"]["milk"]
-
-        rest_of_ingredience["coffee"] = rest_of_ingredience["coffee"] - MENU["cappuccino"]["ingredients"]["coffee"]
-        print(f"Zbylé ingredience: {rest_of_ingredience}")
+        consumption_ingredience(drink_name, rest_of_ingredience)
+        
 
 def ingredience_checker(in_water, in_milk, in_coffee):
     if in_water < 0:
