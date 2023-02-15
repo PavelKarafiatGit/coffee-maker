@@ -67,27 +67,33 @@ def calculate_ingredience(drink_name):
 
 
 ### Kód automatu
-# Volba uživatele - jaký chce nápoj
-user_choice = input("Co si dáte? (espresso/latte/cappuccino): ")
-
 # Načítáme původní množství ingrediencí
 rest_of_ingredience = fill_in_ingredience()
 
-# Kontrolní report
-if user_choice == "report":
-    report(rest_of_ingredience)
+lets_continue = True
 
-# Hlavní kó automatu
-if user_choice == "espresso":
-    sum = coins()
-    print(f"Cena espressa je: {espresso_price} Kč")
-    calculate_change(sum, espresso_price)
-elif user_choice == "latte":
-    sum = coins()
-    print(f"Cena espressa je: {latte_price} Kč")
-    calculate_change(sum, latte_price)
-elif user_choice == "cappuccino":
-    sum = coins()
-    print(f"Cena espressa je: {cappuccino_price} Kč")
-    calculate_change(sum, cappuccino_price)
+while(lets_continue):
+    # Volba uživatele - jaký chce nápoj
+    user_choice = input("Co si dáte? (espresso/latte/cappuccino): ")
+
+    # Vypočítá kolik zbývá ingrediencí
+    calculate_ingredience(user_choice)
+
+    # Kontrolní report
+    if user_choice == "report":
+        report(rest_of_ingredience)
+
+    # Hlavní kó automatu
+    if user_choice == "espresso":
+        sum = coins()
+        print(f"Cena espressa je: {espresso_price} Kč")
+        calculate_change(sum, espresso_price)
+    elif user_choice == "latte":
+        sum = coins()
+        print(f"Cena espressa je: {latte_price} Kč")
+        calculate_change(sum, latte_price)
+    elif user_choice == "cappuccino":
+        sum = coins()
+        print(f"Cena espressa je: {cappuccino_price} Kč")
+        calculate_change(sum, cappuccino_price)
 
