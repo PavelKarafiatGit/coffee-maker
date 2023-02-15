@@ -64,6 +64,19 @@ def calculate_ingredience(drink_name):
         rest_of_ingredience["coffee"] = rest_of_ingredience["coffee"] - MENU["cappuccino"]["ingredients"]["coffee"]
         print(f"Zbylé ingredience: {rest_of_ingredience}")
 
+def ingredience_checker(in_water, in_milk, in_coffee):
+    if in_water < 0:
+        print("Nemáme dostatek ingrediencí na tento nápoj")
+        return False
+    elif in_milk < 0:
+        print("Nemáme dostatek ingrediencí na tento nápoj")
+        return False
+    elif in_coffee < 0:
+        print("Nemáme dostatek ingrediencí na tento nápoj")
+        return False
+    else:
+        print("Na váš nápoj máte dostatek ingrediencí")
+        return True
 
 
 ### Kód automatu
@@ -79,11 +92,18 @@ while(lets_continue):
     # Vypočítá kolik zbývá ingrediencí
     calculate_ingredience(user_choice)
 
+    # Kontrola, zda máme dostatek ingrediencí
+    if user_choice != "report":
+        lets_continue = ingredience_checker(rest_of_ingredience["water"], rest_of_ingredience["milk"], rest_of_ingredience["coffee"])
+    # Má kód dále pokračovat
+    if lets_continue == False:
+        break
+           
     # Kontrolní report
     if user_choice == "report":
         report(rest_of_ingredience)
 
-    # Hlavní kó automatu
+        # Hlavní kód automatu
     if user_choice == "espresso":
         sum = coins()
         print(f"Cena espressa je: {espresso_price} Kč")
